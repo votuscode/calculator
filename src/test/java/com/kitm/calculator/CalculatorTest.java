@@ -1,3 +1,5 @@
+package com.kitm.calculator;
+
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
@@ -6,6 +8,8 @@ import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import static com.kitm.calculator.Calculator.Operation;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CalculatorTest {
@@ -127,7 +131,7 @@ class CalculatorTest {
         Calculator calculator = Calculator.from("INVALID\n+");
 
         // when
-        Calculator.Operation operation = calculator.nextOperation("MESSAGE");
+        Operation operation = calculator.nextOperation("MESSAGE");
 
         // then
         assertEquals("""
