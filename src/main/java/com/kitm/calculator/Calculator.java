@@ -82,7 +82,7 @@ public class Calculator {
 
     void run() {
         mainLoop();
-//        scanner.close();
+        scanner.close();
     }
 
     private Calculator(InputStream inputStream) {
