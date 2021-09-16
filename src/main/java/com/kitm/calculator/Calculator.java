@@ -9,7 +9,7 @@ import java.util.function.BiFunction;
 
 public class Calculator {
     public static record Operation(String name, String description, BiFunction<Double, Double, Double> op) {
-        boolean match(String value) {
+        public boolean match(String value) {
             return name.equals(value);
         }
 
@@ -80,7 +80,7 @@ public class Calculator {
         }
     }
 
-    void run() {
+    public void run() {
         mainLoop();
         scanner.close();
     }
@@ -89,11 +89,11 @@ public class Calculator {
         scanner = new Scanner(inputStream);
     }
 
-    static Calculator from(String input) {
+    public static Calculator from(String input) {
         return new Calculator(new ByteArrayInputStream(input.getBytes()));
     }
 
-    static Calculator from(InputStream inputStream) {
+    public static Calculator from(InputStream inputStream) {
         return new Calculator(inputStream);
     }
 }

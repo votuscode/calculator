@@ -14,27 +14,27 @@ import static com.kitm.calculator.Calculator.Operation;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CalculatorTest {
 
-    final PrintStream DEFAULT_STDOUT = System.out;
+    private final PrintStream DEFAULT_STDOUT = System.out;
 
-    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
     @BeforeAll
-    void beforeAll() {
+    private void beforeAll() {
         System.setOut(new PrintStream(out));
     }
 
     @AfterEach
-    public void afterEach() {
+    private void afterEach() {
         out.reset();
     }
 
     @AfterAll
-    void afterAll() {
+    private void afterAll() {
         System.setOut(DEFAULT_STDOUT);
     }
 
     @Test
-    void listOperations__itShouldListAllAvailableOperations() {
+    public void listOperations__itShouldListAllAvailableOperations() {
         // given
         Calculator calculator = Calculator.from("");
 
@@ -52,7 +52,7 @@ class CalculatorTest {
     }
 
     @Test
-    void nextOperand__itShouldReadAnInteger() {
+    public void nextOperand__itShouldReadAnInteger() {
         // given
         Calculator calculator = Calculator.from("123");
 
@@ -65,7 +65,7 @@ class CalculatorTest {
     }
 
     @Test
-    void nextOperand__itShouldReadADouble() {
+    public void nextOperand__itShouldReadADouble() {
         // given
         Calculator calculator = Calculator.from("123.456");
 
@@ -78,7 +78,7 @@ class CalculatorTest {
     }
 
     @Test
-    void nextOperand__itShouldFailWhenInvalidNumber() {
+    public void nextOperand__itShouldFailWhenInvalidNumber() {
         // given
         Calculator calculator = Calculator.from("INVALID");
 
@@ -87,7 +87,7 @@ class CalculatorTest {
     }
 
     @Test
-    void nextOperand__itShouldRecoverWhenAValidNumberIsFollowed() {
+    public void nextOperand__itShouldRecoverWhenAValidNumberIsFollowed() {
         // given
         Calculator calculator = Calculator.from("INVALID\n123.456");
 
@@ -103,7 +103,7 @@ class CalculatorTest {
     }
 
     @Test
-    void nextOperation__itShouldReadAValidOperation() {
+    public void nextOperation__itShouldReadAValidOperation() {
         // given
         Calculator calculator = Calculator.from("+");
 
@@ -117,7 +117,7 @@ class CalculatorTest {
     }
 
     @Test()
-    void nextOperation__itShouldFailWhenInvalidOperation() {
+    public void nextOperation__itShouldFailWhenInvalidOperation() {
         // given
         Calculator calculator = Calculator.from("INVALID");
 
@@ -126,7 +126,7 @@ class CalculatorTest {
     }
 
     @Test
-    void nextOperation__itShouldRecoverWhenValidOperationIsFollowed() {
+    public void nextOperation__itShouldRecoverWhenValidOperationIsFollowed() {
         // given
         Calculator calculator = Calculator.from("INVALID\n+");
 
