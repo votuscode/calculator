@@ -1,3 +1,5 @@
+package com.kitm.calculator;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -6,7 +8,7 @@ import java.util.Scanner;
 import java.util.function.BiFunction;
 
 public class Calculator {
-    record Operation(String name, String description, BiFunction<Double, Double, Double> op) {
+    public static record Operation(String name, String description, BiFunction<Double, Double, Double> op) {
         boolean match(String value) {
             return name.equals(value);
         }
